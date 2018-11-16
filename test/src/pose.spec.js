@@ -134,3 +134,32 @@ test('Pose#getTransformationMatrixFromPose, getTransformationMatrixToPose', t =>
 
   t.end();
 });
+
+test.only('Pose#toPose', t => {
+  const A = new Pose({
+    yaw: 0,
+    pitch: 0,
+    roll: 0,
+    x: 10,
+    y: 10,
+    z: 0
+  });
+
+  const B = new Pose({
+    yaw: 0,
+    pitch: 0,
+    roll: 0,
+    x: 20,
+    y: 20,
+    z: 0
+  });
+
+  const transformAtoB = A.getTransformationMatrixToPose(B);
+  const originInA = [-10, -10, 0];
+  const originInB = [-20, -20, 0];
+
+  const resultOriginInB = transformAtoB.transformVector(originInA);
+  t.ok(equals(originInB, resultOriginInB), `originInB ${originInB} should match resultOriginInB ${resultOriginInB}`);
+  t.notOk(equals([0, 0, 0], resultOriginInB), `[0, 0, 0] represents AfromB`);
+  t.end();
+});
