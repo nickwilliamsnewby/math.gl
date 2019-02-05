@@ -1,16 +1,19 @@
 {
-  "name": "mathgl-website",
-  "version": "0.1.0",
-  "description": "",
+  "description": "A website built with ocular",
+  "license": "MIT",
+  "keywords": [
+    "ocular"
+  ],
   "main": "index.js",
   "scripts": {
-    "start": "ocular start open",
-    "build": "ocular build"
+    "clean": "rm -rf ./.cache ./public",
+    "develop": "gatsby develop",
+    "build": "gatsby develop",
+    "serve": "gatsby serve"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
-    "ocular": "^0.3.2"
-  }
+    "gatsby": "2.0.85",
+    "ocular-gatsby": "1.0.0-alpha.4"
+  },
+  "devDependencies": {}
 }
